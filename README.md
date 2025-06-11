@@ -67,13 +67,15 @@ Polimorfismo: Implementação do método calcularXp() de forma distinta em Curso
 
 ---
 
-## 🙋‍♀️ Desenvolvido por
+## 🙋‍♀️ Atualizado por
 
 **Priscila Ramonna**  
 
 👩‍💻 Desenvolvedora 
 
 📧 Contato: princyrpiress@gmail.com 
-🔗 [LinkedIn](https://www.linkedin.com/in/priscila-pires-171617128)  | [GitHub](https://github.com/Princyrr)
+
+[LinkedIn](https://www.linkedin.com/in/priscila-pires-171617128)  
+[GitHub](https://github.com/Princyrr)
 
 ---
