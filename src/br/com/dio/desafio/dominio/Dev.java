@@ -7,37 +7,32 @@ public class Dev {
     private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
     private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 
-    public void inscreverBootcamp(Bootcamp bootcamp){
-        this.conteudosInscritos.addAll(bootcamp.getConteudos());
+    // Inscreve o dev em um bootcamp
+    public void inscreverBootcamp(Bootcamp bootcamp) {
+        conteudosInscritos.addAll(bootcamp.getConteudos());
         bootcamp.getDevsInscritos().add(this);
     }
 
+    // Move o primeiro conteúdo inscrito para os conteúdos concluídos
     public void progredir() {
-        Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
-        if(conteudo.isPresent()) {
-            this.conteudosConcluidos.add(conteudo.get());
-            this.conteudosInscritos.remove(conteudo.get());
-        } else {
-            System.err.println("Você não está matriculado em nenhum conteúdo!");
-        }
+        Optional<Conteudo> conteudo = conteudosInscritos.stream().findFirst();
+        conteudo.ifPresentOrElse(
+            c -> {
+                conteudosConcluidos.add(c);
+                conteudosInscritos.remove(c);
+            },
+            () -> System.err.println("Você não está matriculado em nenhum conteúdo!")
+        );
     }
 
+    // Soma o XP de todos os conteúdos concluídos
     public double calcularTotalXp() {
-        Iterator<Conteudo> iterator = this.conteudosConcluidos.iterator();
-        double soma = 0;
-        while(iterator.hasNext()){
-            double next = iterator.next().calcularXp();
-            soma += next;
-        }
-        return soma;
-
-        /*return this.conteudosConcluidos
-                .stream()
-                .mapToDouble(Conteudo::calcularXp)
-                .sum();*/
+        return conteudosConcluidos.stream()
+                                  .mapToDouble(Conteudo::calcularXp)
+                                  .sum();
     }
 
-
+    // Getters e Setters
     public String getNome() {
         return nome;
     }
@@ -47,31 +42,32 @@ public class Dev {
     }
 
     public Set<Conteudo> getConteudosInscritos() {
-        return conteudosInscritos;
+        return Collections.unmodifiableSet(conteudosInscritos);
     }
 
     public void setConteudosInscritos(Set<Conteudo> conteudosInscritos) {
-        this.conteudosInscritos = conteudosInscritos;
+        this.conteudosInscritos = new LinkedHashSet<>(conteudosInscritos);
     }
 
     public Set<Conteudo> getConteudosConcluidos() {
-        return conteudosConcluidos;
+        return Collections.unmodifiableSet(conteudosConcluidos);
     }
 
     public void setConteudosConcluidos(Set<Conteudo> conteudosConcluidos) {
-        this.conteudosConcluidos = conteudosConcluidos;
+        this.conteudosConcluidos = new LinkedHashSet<>(conteudosConcluidos);
     }
 
+    // equals e hashCode baseados no nome (identificador único)
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Dev)) return false;
         Dev dev = (Dev) o;
-        return Objects.equals(nome, dev.nome) && Objects.equals(conteudosInscritos, dev.conteudosInscritos) && Objects.equals(conteudosConcluidos, dev.conteudosConcluidos);
+        return Objects.equals(nome, dev.nome);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nome, conteudosInscritos, conteudosConcluidos);
+        return Objects.hash(nome);
     }
 }

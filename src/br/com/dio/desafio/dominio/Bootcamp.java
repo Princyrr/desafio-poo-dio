@@ -14,7 +14,10 @@ public class Bootcamp {
     private Set<Dev> devsInscritos = new HashSet<>();
     private Set<Conteudo> conteudos = new LinkedHashSet<>();
 
+    // Construtor padrão opcional (pode ser omitido se não tiver lógica)
+    public Bootcamp() {}
 
+    // Getters e Setters
     public String getNome() {
         return nome;
     }
@@ -55,12 +58,18 @@ public class Bootcamp {
         this.conteudos = conteudos;
     }
 
+    // equals e hashCode
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Bootcamp)) return false;
         Bootcamp bootcamp = (Bootcamp) o;
-        return Objects.equals(nome, bootcamp.nome) && Objects.equals(descricao, bootcamp.descricao) && Objects.equals(dataInicial, bootcamp.dataInicial) && Objects.equals(dataFinal, bootcamp.dataFinal) && Objects.equals(devsInscritos, bootcamp.devsInscritos) && Objects.equals(conteudos, bootcamp.conteudos);
+        return Objects.equals(nome, bootcamp.nome) &&
+               Objects.equals(descricao, bootcamp.descricao) &&
+               Objects.equals(dataInicial, bootcamp.dataInicial) &&
+               Objects.equals(dataFinal, bootcamp.dataFinal) &&
+               Objects.equals(devsInscritos, bootcamp.devsInscritos) &&
+               Objects.equals(conteudos, bootcamp.conteudos);
     }
 
     @Override
