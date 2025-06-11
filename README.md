@@ -34,19 +34,6 @@ O sistema simula uma plataforma de bootcamp onde desenvolvedores (`Dev`) podem s
 
 ---
 
-## 📂 Estrutura do Projeto
-
-desafio-poo-dio/
-├── src/
-│ ├── br/com/dio/desafio/dominio/
-│ │ ├── Bootcamp.java
-│ │ ├── Conteudo.java
-│ │ ├── Curso.java
-│ │ ├── Mentoria.java
-│ │ └── Dev.java
-│ └── Main.java
-└── README.md
-
 ## 📸 Demonstração (Saída do console)
 
 Conteúdos Inscritos Camila: [Curso Java, Curso JS, Mentoria Java]
@@ -73,3 +60,20 @@ Herança: Curso e Mentoria herdam de Conteudo.
 
 Polimorfismo: Implementação do método calcularXp() de forma distinta em Curso e Mentoria.
 
+## 🔗 Repositório Original
+
+> Este projeto é um fork do repositório oficial da DIO criado por [@cami-la](https://github.com/cami-la):  
+> [github.com/cami-la/dio-dominando-poo-java](https://github.com/cami-la/dio-dominando-poo-java)
+
+---
+
+## 🙋‍♀️ Desenvolvido por
+
+**Priscila Ramonna**  
+
+👩‍💻 Desenvolvedora 
+
+📧 Contato: princyrpiress@gmail.com 
+🔗 [LinkedIn](https://www.linkedin.com/in/priscila-pires-171617128)  | [GitHub](https://github.com/Princyrr)
+
+---
